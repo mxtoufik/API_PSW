@@ -1,5 +1,5 @@
-import { Router } from "express";
-import * as index from "../controllers/index.controller.js";
+const { Router } = require("express");
+const index = require("../controllers/index.controller");
 
 const router = Router();
 
@@ -7,4 +7,4 @@ router.get("/ping", index.ping);
 
 router.get("/users", index.getUsers);
 
-export default router;
+module.exports = router;

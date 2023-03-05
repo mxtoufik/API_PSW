@@ -1,4 +1,4 @@
-import { createPool } from "mysql2";
+const { createPool } = require("mysql2");
 
 const pool = createPool({
   host: process.env.HOST,
@@ -8,6 +8,6 @@ const pool = createPool({
   port: 3000,
 });
 
-export const getConnection = () => {
-  return pool;
+module.exports = {
+  pool,
 };
