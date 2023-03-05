@@ -1,8 +1,27 @@
 {
+  "name": "api_theecogame",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrazyJMB/api_TheECOGame.git"
+  },
+  "author": "CrazyJMB",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql2": "^3.1.2"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "bugs": {
+    "url": "https://github.com/CrazyJMB/api_TheECOGame/issues"
+  },
+  "homepage": "https://github.com/CrazyJMB/api_TheECOGame#readme",
+  "description": ""
 }
