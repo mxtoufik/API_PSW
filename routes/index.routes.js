@@ -5,6 +5,4 @@ const router = Router();
 
 router.get("/ping", index.ping);
 
-router.get("/users", index.getUsers);
-
 module.exports = router;
