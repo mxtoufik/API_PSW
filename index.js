@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use("/", indexRoutes);
-//app.use("/respuestas", respuestasRoutes);
+app.use("/respuestas", respuestasRoutes);
 app.use("/preguntas", preguntasRoutes);
 
 app.listen(3000);
