@@ -20,7 +20,7 @@ const getQuestionById = async (req, res) => {
     if (rows.length <= 0) {
       return res.status(404).json({ message: "Pregunta no encontrada" });
     }
-    res.json(rows[0]);
+    res.json(rows);
   } catch (error) {
     return res.status(500).json({ message: "Algo ha ido mal" });
   }
