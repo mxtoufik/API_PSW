@@ -4,8 +4,11 @@ const respuestas = require("../controllers/answers.controller");
 
 const router = Router();
 
-router.get("/", preguntas.getQuestions);
-router.get("/:id", preguntas.getQuestion1);
-router.get("/:id/answers", respuestas.getAnswer1);
-
+router.get("/", preguntas.getAllQuestions);
+router.get("/dificultad/:dif", preguntas.getQuestionByDifficulty);
+router.get("/dificultad/:dif/respuestas", respuestas.getAnswersOfQuestion);
+router.get("/id/:id", preguntas.getQuestionById);
+router.get("/id/:id/respuestas", respuestas.getAnswersOfQuestion);
+router.get("/puntos/:point", preguntas.getQuestionByPoints);
+router.get("/puntos/:point/respuestas", respuestas.getAnswersOfQuestion);
 module.exports = router;

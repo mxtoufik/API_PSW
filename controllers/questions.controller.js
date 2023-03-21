@@ -1,7 +1,7 @@
 // Conexion a la BD
 const db = require("../database/database");
 
-const getQuestions = async (req, res) => {
+const getAllQuestions = async (req, res) => {
   try {
     const [rows] = await db.pool.query("SELECT * FROM Preguntas");
     res.json(rows);
@@ -10,11 +10,11 @@ const getQuestions = async (req, res) => {
   }
 };
 
-const getQuestion1 = async (req, res) => {
+const getQuestionById = async (req, res) => {
   try {
     const { id } = req.params;
     const [rows] = await db.pool.query(
-      "SELECT * FROM Preguntas where dificultad = ?",
+      "SELECT * FROM Preguntas where id = ?",
       [id]
       );
     if (rows.length <= 0) {
@@ -26,7 +26,41 @@ const getQuestion1 = async (req, res) => {
   }
 };
 
+const getQuestionByDifficulty = async (req, res) => {
+  try {
+    const { dif } = req.params;
+    const [rows] = await db.pool.query(
+      "SELECT * FROM Preguntas where dificultad = ?",
+      [dif]
+      );
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Pregunta no encontrada" });
+    }
+    res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
+
+const getQuestionByPoints = async (req, res) => {
+  try {
+    const { point } = req.params;
+    const [rows] = await db.pool.query(
+      "SELECT * FROM Preguntas where puntos = ?",
+      [point]
+      );
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Pregunta no encontrada" });
+    }
+    res.json(rows[0]);
+  } catch (error) {
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
+
 module.exports = {
-  getQuestions,
-  getQuestion1,
+  getAllQuestions,
+  getQuestionById,
+  getQuestionByDifficulty,
+  getQuestionByPoints,
 };

@@ -1,7 +1,7 @@
 // Conexion a la BD
 const db = require("../database/database");
 
-const getAnswer1 = async (req, res) => {
+const getAnswersOfQuestion = async (req, res) => {
   try {
     const { id } = req.params;
     const [rows] = await db.pool.query(
@@ -18,5 +18,5 @@ const getAnswer1 = async (req, res) => {
 };
 
 module.exports = {
-  getAnswer1,
+  getAnswersOfQuestion,
 };
