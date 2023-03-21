@@ -10,5 +10,6 @@ router.get("/puntos/:point", preguntas.getQuestionByPoints);
 
 router.get("/id/:id", preguntas.getQuestionById);
 router.get("/id/:id/respuestas", respuestas.getAnswersOfQuestion);
+router.get("/id/:id/respuestaCorrecta", respuestas.getCorrectAnswer);
 
 module.exports = router;
