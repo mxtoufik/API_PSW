@@ -60,10 +60,10 @@ const getQuestionByPoints = async (req, res) => {
 
 const getCountOfDifficulty = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { dif } = req.params;
     const [rows] = await db.pool.query(
       "SELECT Count(*) FROM Preguntas where dificultad = ?",
-      [id]
+      [dif]
       );
     if (rows.length <= 0) {
       return res.status(404).json({ message: "Pregunta no encontrada" });

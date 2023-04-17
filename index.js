@@ -1,6 +1,6 @@
 const express = require("express");
 
-// Routes
+// Routess
 const indexRoutes = require("./routes/index.routes");
 const respuestasRoutes = require("./routes/answers.router");
 const preguntasRoutes = require("./routes/questions.router");
