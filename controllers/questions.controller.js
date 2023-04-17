@@ -90,6 +90,25 @@ const getIdOfDifficulty = async (req, res) => {
   }
 };
 
+const getQuestionsByIds = async (req, res) => {
+  try {
+    const { ids } = req.params;
+    const idArray = ids.split(",");
+    const [rows] = await db.pool.query(
+      "SELECT * FROM Preguntas WHERE id IN (?)",
+      [idArray]
+    );
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Preguntas no encontradas" });
+    }
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
+
+
 module.exports = {
   getAllQuestions,
   getQuestionById,
@@ -97,4 +116,5 @@ module.exports = {
   getQuestionByPoints,
   getCountOfDifficulty,
   getIdOfDifficulty,
+  getQuestionsByIds,
 };

@@ -11,6 +11,7 @@ router.get("/dificultad/:dif/id", preguntas.getIdOfDifficulty);
 router.get("/puntos/:point", preguntas.getQuestionByPoints);
 
 router.get("/id/:id", preguntas.getQuestionById);
+router.get("/id/list/:ids", preguntas.getQuestionsByIds);
 router.get("/id/:id/respuestas", respuestas.getAnswersOfQuestion);
 router.get("/id/:id/respuestaCorrecta", respuestas.getCorrectAnswer);
 
