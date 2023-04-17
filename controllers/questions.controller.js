@@ -74,10 +74,27 @@ const getCountOfDifficulty = async (req, res) => {
   }
 };
 
+const getIdOfDifficulty = async (req, res) => {
+  try {
+    const { dif } = req.params;
+    const [rows] = await db.pool.query(
+      "SELECT id FROM Preguntas where dificultad = ?",
+      [dif]
+      );
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Pregunta no encontrada" });
+    }
+    res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
+
 module.exports = {
   getAllQuestions,
   getQuestionById,
   getQuestionByDifficulty,
   getQuestionByPoints,
   getCountOfDifficulty,
+  getIdOfDifficulty,
 };

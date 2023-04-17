@@ -7,6 +7,7 @@ const router = Router();
 router.get("/", preguntas.getAllQuestions);
 router.get("/dificultad/:dif", preguntas.getQuestionByDifficulty);
 router.get("/dificultad/:dif/count", preguntas.getCountOfDifficulty);
+router.get("/dificultad/:dif/id", preguntas.getIdOfDifficulty);
 router.get("/puntos/:point", preguntas.getQuestionByPoints);
 
 router.get("/id/:id", preguntas.getQuestionById);
