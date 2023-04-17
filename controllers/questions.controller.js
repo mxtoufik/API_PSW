@@ -58,9 +58,26 @@ const getQuestionByPoints = async (req, res) => {
   }
 };
 
+const getCountOfDifficulty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await db.pool.query(
+      "SELECT Count(*) FROM Preguntas where dificultad = ?",
+      [id]
+      );
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Pregunta no encontrada" });
+    }
+    res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
+
 module.exports = {
   getAllQuestions,
   getQuestionById,
   getQuestionByDifficulty,
   getQuestionByPoints,
+  getCountOfDifficulty,
 };
