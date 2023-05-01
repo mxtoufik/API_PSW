@@ -15,6 +15,6 @@ app.use(express.json());
 app.use("/", indexRoutes);
 app.use("/respuestas", respuestasRoutes);
 app.use("/preguntas", preguntasRoutes);
-app.use("/usuarios", preguntasRoutes);
+app.use("/usuarios", usuariosRoutes);
 
 app.listen(3000);
