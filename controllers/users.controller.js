@@ -20,9 +20,6 @@ const getUserByMail = async (req, res) => {
       "SELECT * FROM Usuarios where correo = ?",
       [id]
       );
-    if (rows.length <= 0) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
-    }
     res.json(rows);
   } catch (error) {
     return res.status(500).json({ message: "Algo ha ido mal" });
