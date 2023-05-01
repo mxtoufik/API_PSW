@@ -32,10 +32,10 @@ const getUserByMail = async (req, res) => {
 const registerUser = async (req, res) => {
     try {
       const { id } = req.params;
-      const a = id.split(";");
+      const [username, correo, contraseña] = id.split(";");
       const [rows] = await db.pool.query(
-        "INSERT INTO Usuarios (username, correo, contraseña) VALUES ('?', '?', '?')",
-        [a]
+        "INSERT INTO Usuarios (username, correo, contraseña) VALUES (?, ?, ?)",
+        [username, correo, contraseña]
         );
       if (rows.length <= 0) {
         return res.status(404).json({ message: "Usuario no encontrado" });
