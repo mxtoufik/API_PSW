@@ -25,6 +25,18 @@ const getUserByMail = async (req, res) => {
     return res.status(500).json({ message: "Algo ha ido mal" });
   }
 };
+const getUserByUsername = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await db.pool.query(
+      "SELECT * FROM Usuarios where username = ?",
+      [id]
+      );
+    res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Algo ha ido mal" });
+  }
+};
 
 const registerUser = async (req, res) => {
     try {
@@ -46,5 +58,6 @@ const registerUser = async (req, res) => {
 module.exports = {
     getAllUsers,
   getUserByMail,
-  registerUser
+  registerUser,
+  getUserByUsername
 };
