@@ -55,9 +55,27 @@ const registerUser = async (req, res) => {
     }
   };
 
+  const setPoints = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [correo, puntosAcumuladosUser] = id.split(";");
+      const [rows] = await db.pool.query(
+        "UPDATE Usuarios SET puntosAcumuladosUser = ? WHERE correo = ?",
+        [puntosAcumuladosUser, correo]
+        );
+      if (rows.length <= 0) {
+        return res.status(404).json({ message: "Usuario no encontrado" });
+      }
+      res.status(200).json({ message: "1" });
+    } catch (error) {
+      return res.status(500).json({ message: "-1" });
+    }
+  }; 
+
 module.exports = {
     getAllUsers,
   getUserByMail,
   registerUser,
-  getUserByUsername
+  getUserByUsername,
+  setPoints
 };
