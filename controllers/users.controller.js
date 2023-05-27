@@ -75,10 +75,17 @@ const registerUser = async (req, res) => {
   const setODS = async (req, res) => {
     try {
       const { id } = req.params;
-      const [correo, puntosAcumuladosUser] = id.split(";");
+      var values = str.split(';');
+
+      // Store the first value in "correo" variable
+      var correo = values[0];
+
+      // Join the remaining values into a single string
+      var remainingValues = values.slice(1).join(';');
+
       const [rows] = await db.pool.query(
         "UPDATE Usuarios SET EstadisticaODS = ? WHERE correo = ?",
-        [puntosAcumuladosUser, correo]
+        [remainingValues, correo]
         );
       if (rows.length <= 0) {
         return res.status(404).json({ message: "Usuario no encontrado" });
