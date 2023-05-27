@@ -75,7 +75,7 @@ const registerUser = async (req, res) => {
   const setODS = async (req, res) => {
     try {
       const { id } = req.params;
-      var values = str.split(';');
+      var values = id.split(';');
 
       // Store the first value in "correo" variable
       var correo = values[0];
