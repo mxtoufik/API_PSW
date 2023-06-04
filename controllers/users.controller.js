@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
       const { id } = req.params;
       const [username, correo, contraseña] = id.split(";");
       const [rows] = await db.pool.query(
-        "INSERT INTO Usuarios (username, correo, contraseña) VALUES (?, ?, ?)",
+        "INSERT INTO Usuarios (username, correo, contraseña, EstadisticaODS) VALUES (?, ?, ?, '0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0')",
         [username, correo, contraseña]
         );
       if (rows.length <= 0) {
