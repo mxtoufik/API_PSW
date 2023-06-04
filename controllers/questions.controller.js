@@ -36,7 +36,18 @@ const getQuestionByDifficulty = async (req, res) => {
     if (rows.length <= 0) {
       return res.status(404).json({ message: "Pregunta no encontrada" });
     }
-    res.json(rows);
+    
+    const randomItems = [];
+    const randomIndexes = [];
+    while (randomIndexes.length < 2) {
+      const randomIndex = Math.floor(Math.random() * rows.length);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+        randomItems.push(rows[randomIndex]);
+      }
+    }
+
+    res.json(randomItems);
   } catch (error) {
     return res.status(500).json({ message: "Algo ha ido mal" });
   }
