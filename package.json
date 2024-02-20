@@ -1,5 +1,5 @@
 {
-  "name": "api_theecogame",
+  "name": "api_psw",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,9 +7,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrazyJMB/api_TheECOGame.git"
+    "url": "git+https://github.com/mxtoufik/API_PSW"
   },
-  "author": "CrazyJMB",
+  "author": "MxToufik",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
@@ -20,8 +20,8 @@
     "nodemon": "^2.0.21"
   },
   "bugs": {
-    "url": "https://github.com/CrazyJMB/api_TheECOGame/issues"
+    "url": "https://github.com/mxtoufik/API_PSW"
   },
-  "homepage": "https://github.com/CrazyJMB/api_TheECOGame#readme",
+  "homepage": "https://github.com/mxtoufik/API_PSW",
   "description": ""
 }
